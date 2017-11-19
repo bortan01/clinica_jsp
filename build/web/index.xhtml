@@ -6,21 +6,24 @@
     <h:head>
         <title>CLINICA HOSPITALARIA</title>
     </h:head>
-    
     <h:body >
-           <h1 align="center" style="color: #ffffff" >
+        <h1 align="center" style="color: #ffffff" >
             SISTEMA DE PRESTAMO DE LIBROS
             <img align="middle" src="http://www.ues.edu.sv/october/storage/app/media/minerva2.png" width="100" />
         </h1>
         <center>
-            <img src="http://www.qslspain.es/IMAGENES/LIBROS.png" width="450" />
+            <img src="/resources/imagenes/clinica.jpg" width="450" />
         </center>
+        <br></br>        
         <p:dock itemWidth="55" position="top" maxWidth="100" proximity="50" >
-              <p:menuitem style="color: #dddddd" outcome="paciente/listar_paciente" value="LISTA DE CLINICAS" 
-                        icon="/resources/icon/iconmonstr-pen-12-icon-256.png"  />
+            <p:menuitem style="color: #dddddd" outcome="paciente/agregar_paciente" value="AGREGAR PACIENTE" 
+                        icon="/resources/imagenes/paciente.png"  />
             
-        </p:dock> 
+            <p:menuitem style="color: #dddddd" outcome="paciente/listar_paciente" value="LISTAR PACIENTES" 
+                        icon="/resources/imagenes/lista.png"  />
+            
+            
+        </p:dock>       
     </h:body>
-    
 </html>
 
