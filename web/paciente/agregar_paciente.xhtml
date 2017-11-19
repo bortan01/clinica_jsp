@@ -25,7 +25,7 @@
                     <p:calendar id="fechaN" value="#{control_clinica.paci.fechaNacimiento}" pattern="dd-MM-yyyy" title="Fecha"></p:calendar>       
                     
                     <f:facet name="footer">                        
-                        <p:commandButton id="guardar" value="Guardar" icon="ui-icon-check" style="margin:0" action="#{control_clinica.guardarPaciente()}"></p:commandButton>                                  
+						<p:commandButton id="guardar" value="Guardar" icon="ui-icon-check" style="margin:0" action="#{control_clinica.guardarPaciente()}" process="@this"></p:commandButton>   
                         <p:commandButton id="cancelar" value="Cancelar" icon="ui-icon-circle-close" style="margin:0" action="listar_paciente" process="@this"></p:commandButton>   
                     </f:facet>
 
