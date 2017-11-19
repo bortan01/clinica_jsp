@@ -7,5 +7,9 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/clinica?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">root</property>
+    <mapping class="com.clinica.entidad.Paciente"/>
+    <mapping class="com.clinica.entidad.Doctor"/>
+    <mapping class="com.clinica.entidad.Cita"/>
+    <mapping class="com.clinica.entidad.Clinica"/>
   </session-factory>
 </hibernate-configuration>
