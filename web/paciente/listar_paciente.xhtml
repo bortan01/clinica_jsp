@@ -1,14 +1,144 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="./../template/menu.xhtml">
+                template="./../template/menu.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="top">
         top
     </ui:define>
 
+
     <ui:define name="content">
-       ddddddddddd
+        <h:form id="frmPaciente" acceptcharset="ISO-8859-1">
+            <p:growl autoUpdate="true" showDetail="true"/>
+            <p:messages autoUpdate="true" closable="true" showDetail="true"/>
+            <p:dataTable id="tabla_doctor"  value="#{doctorBean.listaDoctor}"  var="variable_doctor"         
+
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15"
+                         filteredValue="#{doctorBean.listaDoctor}"
+                         widgetVar="wTablaDoctor">
+                <f:facet name="header">
+
+                    <p:outputPanel>
+                        <p:outputLabel value="Busqueda" for="globalFilter"/>
+                        <p:inputText id="globalFilter" style="width: 500px" 
+                                     onkeyup="PF('wTablaDoctor').filter()"/>
+                        <p:commandButton action="registrar_doctor.xhtml?faces-redirect=true"
+                                         icon="ui-icon-circle-plus"/>
+                    </p:outputPanel>                    
+                </f:facet>
+
+                <p:column headerText="NOMBRE" filterBy="#{variable_doctor.nombre}">
+                    <h:outputLabel value="#{variable_doctor.nombre}"/>
+                </p:column>
+                <p:column headerText="APELLIDO" filterBy="#{variable_doctor.apellido}">
+                    <h:outputLabel value="#{variable_doctor.apellido}"/>
+                </p:column>
+                <p:column headerText="DIRECCION" filterBy="#{variable_doctor.direccion}">
+                    <h:outputLabel value="#{variable_doctor.direccion}"/>
+                </p:column>
+                <p:column headerText="EDAD" filterBy="#{variable_doctor.edad}">
+                    <h:outputLabel value="#{variable_doctor.edad}"/>
+                </p:column>
+              
+                
+                <p:column headerText="Acciones" style="width: 12%">
+                    <p:panelGrid>
+                        <p:column headerText="">
+                            <p:commandButton icon="ui-icon-pencil" oncomplete="PF('dlgModificar').show();"
+                                             ajax="true" update="formModificar">
+                                <f:setPropertyActionListener 
+                                    target="#{doctorBean.doctorSeleccionado}" 
+                                    value="#{variable_doctor}"/>
+                            </p:commandButton>
+                        </p:column>
+                        <p:column>
+                            <p:commandButton icon="ui-icon-trash" oncomplete="PF('confirmacion').show()" >
+                                <f:setPropertyActionListener 
+                                    target="#{doctorBean.doctorSeleccionado}" 
+                                    value="#{variable_doctor}"/>
+                            </p:commandButton>
+                        </p:column>
+                    </p:panelGrid>
+                </p:column>
+                
+           </p:dataTable>
+        </h:form>
+        
+        <!-->el idAutor es de output text</!-->
+        <h:form id="formModificar"  >
+            <p:dialog id="dlg" widgetVar="dlgModificar" header="Modificación de datos de Doctor" >
+                <p:panel header="Modificar Doctor">
+                    <p:panelGrid styleClass="sinBorde">
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel for="idDoctor" value="ID DE DOCTOR"/> <!-->el idAutor es de output text</!-->
+                            </p:column>
+                            <p:column>
+                                <h:outputText id="idDoctor" value="#{doctorBean.doctorSeleccionado.idDoctor}"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel for="nombres" value="NOMBRE"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText id="nombres" value="#{doctorBean.doctorSeleccionado.nombre}"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+
+                            <p:column>
+                                <p:outputLabel for="apellido" value="APELLIDO"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText id="apellido" value="#{doctorBean.doctorSeleccionado.apellido}"/>
+                            </p:column>
+
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel for="direccion" value="DIRECCION"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText id="direccion" value="#{doctorBean.doctorSeleccionado.direccion}"/>
+                            </p:column>
+
+                        </p:row>
+                         <p:row>
+                            <p:column>
+                                <p:outputLabel for="edad" value="EDAD"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText id="edad" value="#{doctorBean.doctorSeleccionado.edad}"/>
+                            </p:column>
+                        </p:row>
+                        
+                        
+                        
+                        <p:row>
+                            <p:column>
+                                <h:commandButton value="Guardar cambios"
+                                                 actionListener="#{doctorBean.actualizarDoctor()}"/>
+                            </p:column>
+                        </p:row>
+
+                    </p:panelGrid>
+                </p:panel>
+            </p:dialog>
+        </h:form>
+        
+        
+        
     </ui:define>
+
+    <ui:define name="bottom">
+        bottom
+    </ui:define>    
 
 </ui:composition>
