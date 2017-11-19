@@ -20,7 +20,7 @@
                          paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          rowsPerPageTemplate="5,10,15"
-                         filteredValue="#{variable_paciente.nombre}"
+                         filteredValue="#{lista_paciente.nombre}"
                          widgetVar="wTablaDoctor">
                 <f:facet name="header">
 
@@ -33,17 +33,17 @@
                     </p:outputPanel>                    
                 </f:facet>
 
-                <p:column headerText="NOMBRE" filterBy="#{variable_paciente.nombre}">
-                    <h:outputLabel value=""/>
+                <p:column headerText="NOMBRE" filterBy="#{lista_paciente.nombre}">
+                    <h:outputLabel value="#{lista_paciente.nombre}"/>
                 </p:column>
-                <p:column headerText="APELLIDO" filterBy="#{variable_doctor.apellido}">
-                    <h:outputLabel value="fasdfaldjflak"/>
+                <p:column headerText="APELLIDO" filterBy="#{lista_paciente.apellido}">
+                    <h:outputLabel value="#{lista_paciente.apellido}"/>
                 </p:column>
-                <p:column headerText="DIRECCION" filterBy="#{variable_doctor.direccion}">
-                    <h:outputLabel value="#{variable_doctor.direccion}"/>
+                <p:column headerText="DIRECCION" filterBy="#{lista_paciente.direccion}">
+                    <h:outputLabel value="#{lista_paciente.direccion}"/>
                 </p:column>
-                <p:column headerText="EDAD" filterBy="#{variable_doctor.edad}">
-                    <h:outputLabel value="#{variable_doctor.edad}"/>
+                <p:column headerText="EDAD" filterBy="#{lista_paciente.edad}">
+                    <h:outputLabel value="#{lista_paciente.edad}"/>
                 </p:column>
               
                 
