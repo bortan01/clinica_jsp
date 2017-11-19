@@ -12,18 +12,20 @@
     <ui:define name="content">
         <h:form>
             <p:panel header="Nuevo Paciente">
-                <p:panelGrid columns="2" style="width: 100%">
+                <p:panelGrid columns="2" style="width: 50%">
                     <h:outputLabel for="nombre" value="NOMBRE" />
-                    <p:inputText id="nombre" value="#{pacienteBean.pacienteSeleccionado.nombre}" required="true" label="NOMBRE" />
+                    <p:inputText id="nombre" value="#{control_clinica.paci.nombre}" required="true" label="NOMBRE" />
+                    <h:outputLabel for="apellido" value="APELLIDO" />
+                    <p:inputText id="apellido" value="#{control_clinica.paci.apellido}" required="true" label="APELLIDO" />
                     <h:outputLabel for="direccion" value="DIRECCION" />
-                    <p:inputText id="direccion" value="#{pacienteBean.pacienteSeleccionado.direccion}" required="true" label="DIRECCION"/> 
+                    <p:inputText id="direccion" value="#{control_clinica.paci.direccion}" required="true" label="DIRECCION"/> 
                     <h:outputLabel for="edad" value="EDAD" />
-                    <p:inputText id="edad" value="#{pacienteBean.pacienteSeleccionado.edad}" required="true" label="EDAD" />
-                    <h:outputLabel for="correo" value="CORREO" />
-                    <p:inputText id="correo" value="#{pacienteBean.pacienteSeleccionado.correo}" required="true" label="CORREO"/> 
+                    <p:inputText id="edad" value="#{control_clinica.paci.edad}" required="true" label="EDAD" />
+                    <h:outputLabel for="fechaN" value="FECHA DE NACIMIENTO" />
+                    <p:calendar id="fechaN" value="#{control_clinica.paci.fechaNacimiento}" pattern="dd-MM-yyyy" title="Fecha"></p:calendar>       
                     
                     <f:facet name="footer">                        
-                        <p:commandButton id="guardar" value="Guardar" icon="ui-icon-check" style="margin:0" action="#{pacienteBean.insertarPaciente()}"></p:commandButton>                                  
+                        <p:commandButton id="guardar" value="Guardar" icon="ui-icon-check" style="margin:0" action="#{control_clinica.guardarPaciente()}"></p:commandButton>                                  
                         <p:commandButton id="cancelar" value="Cancelar" icon="ui-icon-circle-close" style="margin:0" action="listar_paciente" process="@this"></p:commandButton>   
                     </f:facet>
 

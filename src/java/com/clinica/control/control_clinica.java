@@ -30,6 +30,11 @@ public class control_clinica implements Serializable{
         } catch (Exception e) {
         }
     }
+     public String guardarPaciente() throws Exception {
+        
+        pacienteDI.saveOrUpdate(paci);
+        return "listar_paciente.xhtml?faces-redirect=true";
+    }
 
     public Paciente getPaci() {
         return paci;
@@ -39,6 +44,8 @@ public class control_clinica implements Serializable{
         this.paci = paci;
     }
 
+    
+    
     public List<Paciente> getLista_paciente() throws Exception {
         lista_paciente =pacienteDI.listarVuelos();
                return lista_paciente;
