@@ -15,8 +15,8 @@ public class pacienteDaoImpl extends GenericDaoImpl<Paciente, Integer> implement
         Session session = sessionFactory.openSession();
         try {
             session.beginTransaction();
-            String hql = " select v from Paciente";
-            System.out.println(hql);
+            String hql = "select v from Paciente v";
+            System.out.println("este es el sql utilizado " + hql);
             Query query = session.createQuery(hql);
             List<Paciente> entities = query.list();
             session.getTransaction().commit();

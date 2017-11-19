@@ -15,12 +15,12 @@
         <h:form id="frmPaciente" acceptcharset="ISO-8859-1">
             <p:growl autoUpdate="true" showDetail="true"/>
             <p:messages autoUpdate="true" closable="true" showDetail="true"/>
-            <p:dataTable id="tabla_doctor"  value="#{control_clinica.paci}"  var="variable_doctor"         
+            <p:dataTable id="tabla_doctor"  value="#{control_clinica.lista_paciente}"  var="lista_paciente"         
 
                          paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          rowsPerPageTemplate="5,10,15"
-                         filteredValue="#{doctorBean.listaDoctor}"
+                         filteredValue="#{variable_paciente.nombre}"
                          widgetVar="wTablaDoctor">
                 <f:facet name="header">
 
@@ -33,11 +33,11 @@
                     </p:outputPanel>                    
                 </f:facet>
 
-                <p:column headerText="NOMBRE aqui" filterBy="#{variable_doctor}">
-                    <h:outputLabel value="dddddd"/>
+                <p:column headerText="NOMBRE" filterBy="#{variable_paciente.nombre}">
+                    <h:outputLabel value=""/>
                 </p:column>
                 <p:column headerText="APELLIDO" filterBy="#{variable_doctor.apellido}">
-                    <h:outputLabel value="#{variable_doctor.apellido}"/>
+                    <h:outputLabel value="fasdfaldjflak"/>
                 </p:column>
                 <p:column headerText="DIRECCION" filterBy="#{variable_doctor.direccion}">
                     <h:outputLabel value="#{variable_doctor.direccion}"/>

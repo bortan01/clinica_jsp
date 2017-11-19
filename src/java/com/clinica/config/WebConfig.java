@@ -77,7 +77,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         dataSource.setPassword("root");
         return dataSource;
     }
-
+   
     @Override
     public void configureDefaultServletHandling(
             DefaultServletHandlerConfigurer configurer) {

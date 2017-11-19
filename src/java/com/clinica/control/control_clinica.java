@@ -20,8 +20,8 @@ public class control_clinica implements Serializable{
     
     private Paciente paci;
     private List<Paciente> lista_paciente;
-    @ManagedProperty("#{AeropuertoDaoImpl}")
-    private pacienteDaoImpl pacienteDI;
+    @ManagedProperty("#{pacienteDaoImpl}")
+    private pacienteDaoImpl pacienteDI = new pacienteDaoImpl();
     
      @PostConstruct
     public void init() {
@@ -39,8 +39,9 @@ public class control_clinica implements Serializable{
         this.paci = paci;
     }
 
-    public List<Paciente> getLista_paciente() {
-        return lista_paciente;
+    public List<Paciente> getLista_paciente() throws Exception {
+        lista_paciente =pacienteDI.listarVuelos();
+               return lista_paciente;
     }
 
     public void setLista_paciente(List<Paciente> lista_paciente) {
