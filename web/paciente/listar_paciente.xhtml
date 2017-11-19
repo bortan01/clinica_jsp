@@ -15,7 +15,7 @@
         <h:form id="frmPaciente" acceptcharset="ISO-8859-1">
             <p:growl autoUpdate="true" showDetail="true"/>
             <p:messages autoUpdate="true" closable="true" showDetail="true"/>
-            <p:dataTable id="tabla_doctor"  value="#{doctorBean.listaDoctor}"  var="variable_doctor"         
+            <p:dataTable id="tabla_doctor"  value="#{control_clinica.paci}"  var="variable_doctor"         
 
                          paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -33,8 +33,8 @@
                     </p:outputPanel>                    
                 </f:facet>
 
-                <p:column headerText="NOMBRE" filterBy="#{variable_doctor.nombre}">
-                    <h:outputLabel value="#{variable_doctor.nombre}"/>
+                <p:column headerText="NOMBRE aqui" filterBy="#{variable_doctor}">
+                    <h:outputLabel value="dddddd"/>
                 </p:column>
                 <p:column headerText="APELLIDO" filterBy="#{variable_doctor.apellido}">
                     <h:outputLabel value="#{variable_doctor.apellido}"/>

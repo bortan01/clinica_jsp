@@ -60,7 +60,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sfb = new LocalSessionFactoryBean();
         sfb.setDataSource(restDataSource());
-        sfb.setPackagesToScan(new String[]{"com.aerolinea.entidad"});
+        sfb.setPackagesToScan(new String[]{"com.clinica.entidad"});
         Properties props = new Properties();
         props.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         props.setProperty("hibernate.show_sql", "true");
@@ -72,7 +72,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public DriverManagerDataSource restDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/aerolinea?zeroDateTimeBehavior=convertToNull");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/clinica?zeroDateTimeBehavior=convertToNull");
         dataSource.setUsername("root");
         dataSource.setPassword("root");
         return dataSource;

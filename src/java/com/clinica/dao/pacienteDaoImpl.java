@@ -2,39 +2,26 @@ package com.clinica.dao;
 
 import com.clinica.entidad.Paciente;
 import java.io.Serializable;
-import java.util.Date;
+
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Component;
 
 @Component("pacienteDaoImpl")
-public class pacienteDaoImpl extends GenericDaoImpl<Paciente, Integer> implements pacienteDao, Serializable{
-    public List<Paciente> listarVuelos(Date fecha1, Date fecha2, Integer idorigen, Integer iddestino) throws Exception {///esto no va 
+public class pacienteDaoImpl extends GenericDaoImpl<Paciente, Integer> implements pacienteDao, Serializable {
+
+    public List<Paciente> listarVuelos() throws Exception {
         Session session = sessionFactory.openSession();
         try {
             session.beginTransaction();
-            String hql = " select v from Paciente v join fetch v.aeropuertoByIdorigen " + " join fetch v.aeropuertoByIddestino join fetch v.avion " + " where v.idvuelo>0 ";
+            String hql = " select v from Paciente";
             System.out.println(hql);
-            if (fecha1 != null && fecha2 != null) {
-                hql += " and v.fecha between :f1 and :f2";
-            }
-            if (iddestino != 0 && idorigen != 0) {
-                hql += " and v.aeropuertoByIdorigen.idaeropuerto = :idorigen and v.aeropuertoByIddestino.idaeropuerto = :iddestino";
-            }
             Query query = session.createQuery(hql);
-            if (fecha1 != null && fecha2 != null) {
-                query.setParameter("f1", fecha1);
-                query.setParameter("f2", fecha2);
-            }
-            if (iddestino != 0 && idorigen != 0) {
-                query.setParameter("idorigen", idorigen);
-                query.setParameter("iddestino", iddestino);
-            }
             List<Paciente> entities = query.list();
             session.getTransaction().commit();
 
-                        return entities;
+            return entities;
         } catch (Exception ex) {
             try {
                 if (session.getTransaction().isActive()) {
@@ -46,6 +33,6 @@ public class pacienteDaoImpl extends GenericDaoImpl<Paciente, Integer> implement
         } finally {
             session.close();
         }
-    }   
+    }
 
 }
